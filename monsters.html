@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalendale Codex — Monsters & Beasts</title>
+	<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Monsters & Beasts</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="locations.html">Locations</a>
+      <a class="active" href="monsters.html">Monsters</a>
+      <a href="classes.html">Classes</a>
+      <a href="races.html">Races</a>
+      <a href="other.html">Other</a>
+    </nav>
+  </header>
+  <div class="page">
+	
+    <section class="row">
+      <img src="img/morrowynn_deer.jpg" alt="Morrowynn Deer">
+      <div>
+        <h2>Morrowynn Deer</h2>
+        <p>
+          Skittish silhouettes between the trees of Morrowynn Forest. 
+          Sometimes their eyes reflect blue fire—and sometimes they don’t reflect at all.
+        </p>
+      </div>
+    </section>	
+
+    <section class="row">
+      <img src="img/giant_rat.jpg" alt="Giant Rat">
+      <div>
+        <h2>Giant Rat</h2>
+        <p>
+          Filthy, bold, and fond of the warm—boot leather, sleeping bags, and exposed ankles.
+          Their teeth are yellow scythes; their courage borrowed from darkness.
+        </p>
+      </div>
+    </section>
+
+    <section class="row">
+      <img src="img/restless_skeleton.jpg" alt="Restless Skeleton">
+      <div>
+        <h2>Restless Skeleton</h2>
+        <p>
+          Rattle and malice in a man-shape. Sockets burn with the memory of sight.
+          Their hatred is simple and tireless. Found in crypts and beneath the town.
+        </p>
+      </div>
+    </section>
+		
+  </div>
+
+  <footer>Shadows of Kalendale — KBOX Labs</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll("img");
+  const overlay = document.createElement("div");
+  overlay.id = "overlay";
+  document.body.appendChild(overlay);
+
+  images.forEach(img => {
+    img.classList.add("expandable");
+    img.addEventListener("click", () => {
+      const clone = img.cloneNode();
+      overlay.innerHTML = "";        // clear previous image
+      overlay.appendChild(clone);
+      document.body.style.overflow = "hidden"; // prevent background scroll
+      overlay.classList.add("visible");
+
+      // Close on click
+      const close = () => {
+        overlay.classList.remove("visible");
+        document.body.style.overflow = "";
+        setTimeout(() => overlay.style.display = "none", 250);
+      };
+      clone.addEventListener("click", close);
+      overlay.addEventListener("click", close);
+      overlay.style.display = "flex";
+    });
+  });
+});
+</script>
+	
+</body>
+</html>

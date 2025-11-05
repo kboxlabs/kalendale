@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalendale Codex — Other</title>
+	<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Systems & Survival</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="locations.html">Locations</a>
+      <a href="monsters.html">Monsters</a>
+      <a href="classes.html">Classes</a>
+      <a href="races.html">Races</a>
+      <a class="active" href="other.html">Other</a>
+    </nav>
+  </header>
+
+  <div class="page">
+	
+	
+    <section class="row">
+      <img src="img/coins_and_vendor.jpg" alt="Coins and Vendor Stall">
+      <div>
+        <h2>Shops & Coin</h2>
+        <p>
+          Vendors trade in coin and patience. One hundred silver marks equal one gold crown.
+          Pawnbrokers buy anything—especially your regrets.
+        </p>
+      </div>
+    </section>
+
+    <section class="row">
+      <img src="img/attributes.jpg" alt="Attributes symbols">
+      <div>
+        <h2>Attributes</h2>
+        <p>
+          Strength, Constitution, Agility, Intellect, Charisma, Luck.
+          Numbers behind every legend, and every grave.
+        </p>
+      </div>
+    </section>
+
+    <section class="row">
+      <img src="img/corpse_decay.jpg" alt="Corpse Decay stages">
+      <div>
+        <h2>Corpses</h2>
+        <p>
+          Time and rot wait for no adventurer. Search quickly; corpses crumble to dust,
+          and dust isn’t worth much.
+        </p>
+      </div>
+    </section>
+
+    <section class="row">
+      <img src="img/coins.jpg" alt="Coin">
+      <div>
+        <h2>Coin</h2>
+        <p>
+          Vendors have wares, if you have coin.
+        </p>
+      </div>
+    </section>
+
+  </div>
+  <footer>Shadows of Kalendale — KBOX Labs</footer>
+	
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll("img");
+  const overlay = document.createElement("div");
+  overlay.id = "overlay";
+  document.body.appendChild(overlay);
+
+  images.forEach(img => {
+    img.classList.add("expandable");
+    img.addEventListener("click", () => {
+      const clone = img.cloneNode();
+      overlay.innerHTML = "";        // clear previous image
+      overlay.appendChild(clone);
+      document.body.style.overflow = "hidden"; // prevent background scroll
+      overlay.classList.add("visible");
+
+      // Close on click
+      const close = () => {
+        overlay.classList.remove("visible");
+        document.body.style.overflow = "";
+        setTimeout(() => overlay.style.display = "none", 250);
+      };
+      clone.addEventListener("click", close);
+      overlay.addEventListener("click", close);
+      overlay.style.display = "flex";
+    });
+  });
+});
+</script>
+
+</body>
+</html>

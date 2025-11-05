@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalendale Codex — Locations</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Locations of Kalendale</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a class="active" href="locations.html">Locations</a>
+      <a href="monsters.html">Monsters</a>
+      <a href="classes.html">Classes</a>
+      <a href="races.html">Races</a>
+      <a href="other.html">Other</a>
+    </nav>
+  </header>
+
+  <div class="page">
+    <section class="row">
+      <img src="img/kalendale_square.jpg" alt="Kalendale Square">
+      <div>
+        <h2>Kalendale Square</h2>
+        <p>
+          The fog-lit heart of the settlement. Merchants cry their wares beside a cracked well.
+          The air smells of forge smoke and briarmead.
+        </p>
+      </div>
+    </section>
+
+    <section class="row">
+      <img src="img/morrowynn_forest.jpg" alt="Morrowynn Forest">
+      <div>
+        <h2>Morrowynn Forest</h2>
+        <p>
+          A twisting sprawl of black pines and moss-slick stones.
+          Travelers vanish between the boles; only crows return.
+        </p>
+      </div>
+    </section>
+
+    <section class="row">
+      <img src="img/dungeon_of_the_fallen.jpg" alt="Dungeon of the Fallen">
+      <div>
+        <h2>Dungeon of the Fallen</h2>
+        <p>
+          Beneath the cemetery lies a vast labyrinth of stone. 
+          Bones whisper, water drips, and the dark grows thicker than air.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <footer>Shadows of Kalendale — KBOX Labs</footer>
+	
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll("img");
+  const overlay = document.createElement("div");
+  overlay.id = "overlay";
+  document.body.appendChild(overlay);
+
+  images.forEach(img => {
+    img.classList.add("expandable");
+    img.addEventListener("click", () => {
+      const clone = img.cloneNode();
+      overlay.innerHTML = "";        // clear previous image
+      overlay.appendChild(clone);
+      document.body.style.overflow = "hidden"; // prevent background scroll
+      overlay.classList.add("visible");
+
+      // Close on click
+      const close = () => {
+        overlay.classList.remove("visible");
+        document.body.style.overflow = "";
+        setTimeout(() => overlay.style.display = "none", 250);
+      };
+      clone.addEventListener("click", close);
+      overlay.addEventListener("click", close);
+      overlay.style.display = "flex";
+    });
+  });
+});
+</script>
+
+</body>
+</html>

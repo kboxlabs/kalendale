@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalendale Codex — Races</title>
+	<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Folk of the Realm</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="locations.html">Locations</a>
+      <a href="monsters.html">Monsters</a>
+      <a href="classes.html">Classes</a>
+      <a class="active" href="races.html">Races</a>
+      <a href="other.html">Other</a>
+    </nav>
+  </header>
+
+  <div class="page">
+    <section class="row">
+      <img src="img/race_human.jpg" alt="Human">
+      <div>
+        <h2>Humans</h2>
+        <p>
+          Stubborn and endlessly adaptive. The backbone of Kalendale’s survival and its mistakes.
+        </p>
+      </div>
+    </section>
+
+    <section class="row">
+      <img src="img/race_elf.jpg" alt="Elf">
+      <div>
+        <h2>Elves</h2>
+        <p>
+          Pale-eyed and patient. Born of moonlight and old grief; swift of hand and distant of heart.
+        </p>
+      </div>
+    </section>
+
+    <section class="row">
+      <img src="img/race_dwarf.jpg" alt="Dwarf">
+      <div>
+        <h2>Dwarves</h2>
+        <p>
+          Hard as their stone halls. Honest work, blunt words, and eyes that weigh gold by habit.
+        </p>
+      </div>
+    </section>
+	
+    <section class="row">
+      <img src="img/race_orc.jpg" alt="Orc">
+      <div>
+        <h2>Orcs</h2>
+        <p>
+          Strong and powerful, but rough and unrefined.
+        </p>
+      </div>
+    </section>
+
+    <section class="row">
+      <img src="img/race_halfling.jpg" alt="Halfling">
+      <div>
+        <h2>Halflings</h2>
+        <p>
+          The Halfling description is only half done.
+        </p>
+      </div>
+    </section>
+			
+  </div>
+
+  <footer>Shadows of Kalendale — KBOX Labs</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll("img");
+  const overlay = document.createElement("div");
+  overlay.id = "overlay";
+  document.body.appendChild(overlay);
+
+  images.forEach(img => {
+    img.classList.add("expandable");
+    img.addEventListener("click", () => {
+      const clone = img.cloneNode();
+      overlay.innerHTML = "";        // clear previous image
+      overlay.appendChild(clone);
+      document.body.style.overflow = "hidden"; // prevent background scroll
+      overlay.classList.add("visible");
+
+      // Close on click
+      const close = () => {
+        overlay.classList.remove("visible");
+        document.body.style.overflow = "";
+        setTimeout(() => overlay.style.display = "none", 250);
+      };
+      clone.addEventListener("click", close);
+      overlay.addEventListener("click", close);
+      overlay.style.display = "flex";
+    });
+  });
+});
+</script>
+	
+</body>
+</html>

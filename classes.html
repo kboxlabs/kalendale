@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalendale Codex — Classes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Paths of Craft & Calling</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="locations.html">Locations</a>
+      <a href="monsters.html">Monsters</a>
+      <a class="active" href="classes.html">Classes</a>
+      <a href="races.html">Races</a>
+      <a href="other.html">Other</a>
+    </nav>
+  </header>
+
+  <div class="page">
+    <section class="row">
+      <img src="img/class_warrior.jpg" alt="Warrior">
+      <div>
+        <h2>Warrior</h2>
+        <p>
+          Steel, grit, and an unflinching will. Warriors turn gold into armor,
+          and armor into time—time to win.
+        </p>
+      </div>
+    </section>
+
+    <section class="row">
+      <img src="img/class_rogue.jpg" alt="Rogue">
+      <div>
+        <h2>Rogue</h2>
+        <p>
+          Hunter of the wild paths. Silent boots, steady aim, and the patience of stone.
+        </p>
+      </div>
+    </section>
+
+    <section class="row">
+      <img src="img/class_mage.jpg" alt="Mage">
+      <div>
+        <h2>Mage</h2>
+        <p>
+          Scholar of sparks and shadow. Glass cannons wrapped in parchment wisdom.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <footer>Shadows of Kalendale — KBOX Labs</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll("img");
+  const overlay = document.createElement("div");
+  overlay.id = "overlay";
+  document.body.appendChild(overlay);
+
+  images.forEach(img => {
+    img.classList.add("expandable");
+    img.addEventListener("click", () => {
+      const clone = img.cloneNode();
+      overlay.innerHTML = "";        // clear previous image
+      overlay.appendChild(clone);
+      document.body.style.overflow = "hidden"; // prevent background scroll
+      overlay.classList.add("visible");
+
+      // Close on click
+      const close = () => {
+        overlay.classList.remove("visible");
+        document.body.style.overflow = "";
+        setTimeout(() => overlay.style.display = "none", 250);
+      };
+      clone.addEventListener("click", close);
+      overlay.addEventListener("click", close);
+      overlay.style.display = "flex";
+    });
+  });
+});
+</script>
+
+</body>
+</html>
